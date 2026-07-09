@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Chaincode as a Service builder
+# No build needed, chaincode is already built as Docker image
+
+exit 0

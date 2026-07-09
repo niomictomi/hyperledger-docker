@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Chaincode as a Service builder
+# Run the chaincode container
+
+CHAINCODE_IMAGE=$(cat "$CHAINCODE_METADATA_DIR/connection.json" | jq -r '.image')
+
+docker run -d --name "$CHAINCODE_ID" \
+  --network gov_blockchain_net \
+  -e CHAINCODE_SERVER_ADDRESS=0.0.0.0:9999 \
+  -e CHAINCODE_ID="$CHAINCODE_ID" \
+  -e CORE_CHAINCODE_ID_NAME="$CHAINCODE_ID" \
+  "$CHAINCODE_IMAGE"
+
+# Wait for chaincode to start
+sleep 5
+
+exit 0

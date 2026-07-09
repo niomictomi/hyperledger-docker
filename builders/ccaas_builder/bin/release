@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Chaincode as a Service builder
+# No release needed
+
+exit 0
