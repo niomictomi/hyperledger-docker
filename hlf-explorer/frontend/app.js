@@ -27,7 +27,7 @@ class BlockchainExplorer {
         content.innerHTML = '<div class="loading">Loading</div>';
 
         try {
-            switch(page) {
+            switch (page) {
                 case 'dashboard':
                     await this.loadDashboard();
                     break;
@@ -48,7 +48,7 @@ class BlockchainExplorer {
 
     async loadDashboard() {
         const content = document.getElementById('content');
-        
+
         const [channelInfo, blocks, networkInfo] = await Promise.all([
             fetch(`${API_BASE}/channel-info`).then(r => r.json()),
             fetch(`${API_BASE}/blocks`).then(r => r.json()),
@@ -129,7 +129,7 @@ class BlockchainExplorer {
             <div class="block-card" data-block="${block.block_number}">
                 <h3>Block #${block.block_number}</h3>
                 <div class="meta">
-                    <span>🕐 ${block.timestamp ? new Date(block.timestamp * 1000).toLocaleString() : 'N/A'}</span>
+                    <span>🕐 ${block.timestamp ? new Date(block.timestamp).toLocaleString() : 'N/A'}</span>
                     <span>📝 ${typeLabels[block.type] || 'UNKNOWN'}</span>
                     <span>✍️ ${block.creator_mspid || 'N/A'}</span>
                     <span>📊 ${block.num_writes} writes</span>
@@ -188,7 +188,7 @@ class BlockchainExplorer {
                         </div>
                         <div class="info-item">
                             <label>Timestamp</label>
-                            <div class="value">${block.timestamp ? new Date(block.timestamp * 1000).toLocaleString() : 'N/A'}</div>
+                            <div class="value">${block.timestamp ? new Date(block.timestamp).toLocaleString() : 'N/A'}</div>
                         </div>
                         <div class="info-item">
                             <label>Transaction ID</label>
